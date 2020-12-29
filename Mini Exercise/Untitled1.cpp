@@ -2,26 +2,25 @@
 #include <conio.h>
 #include <string.h>
 
-typedef struct
-{
+typedef struct {
 	char Ma[10];
 	char HoTen[40];
 } SinhVien;
 
-void WriteFile (char *FileName)
-{
+void WriteFile (char *FileName) {
 	FILE *f;
 	int n, i;
 	SinhVien sv;
 	f = fopen (FileName, "ab");
 	printf("Nhap bao nhieu sinh vien ? "); scanf("%d",&n);
 	fflush(stdin);
-	for(i = 1 ; i <= n ; i++)
-	{
-		printf("Sinh vien thu %i\n",i);
-		printf("  - MSSV: ");gets(sv.Ma);
-		printf("  - Ho ten: ");gets(sv.HoTen);
-		fwrite(&sv,sizeof(sv),1,f);
+	for(i = 1 ; i <= n ; i++) {
+		printf("Sinh vien thu %i\n", i);
+		printf("  - MSSV: ");
+		gets(sv.Ma);
+		printf("  - Ho ten: ");
+		gets(sv.HoTen);
+		fwrite(&sv,sizeof(sv), 1, f);
 		fflush(stdin);
 	}
 	fclose(f);
@@ -29,16 +28,14 @@ void WriteFile (char *FileName)
 	getch();
 }
 
-void ReadFile (char *FileName)
-{
+void ReadFile (char *FileName) {
 	FILE *f;
 	SinhVien sv;
-	f= fopen(FileName,"rb");
+	f= fopen(FileName, "rb");
 	printf("   MSSV   |   Ho va ten\n");
-	fread(&sv,sizeof(sv),1,f);
-	while (feof(f))
-	{
-		printf("   %s   |   %s\n",sv.Ma,sv.HoTen);
+	fread(&sv,sizeof(sv), 1, f);
+	while (feof(f))	{
+		printf("   %s   |   %s\n", sv.Ma,sv.HoTen);
 		fread(&sv,sizeof(sv),1,f);
 	}
 	fclose(f);
@@ -46,8 +43,7 @@ void ReadFile (char *FileName)
 	getch();
 }
 
-void Search(char *FileName)
-{
+void Search(char *FileName) {
 	char MSSV[10];
 	FILE *f;
 	int Found = 0;
@@ -55,31 +51,29 @@ void Search(char *FileName)
 	fflush(stdin);
 	printf("Ma so sinh vien can tim: ");gets(MSSV);
 	f= fopen(FileName,"rb");
-	while (!feof(f) && Found == 0)
-	{
-		fread(&sv,sizeof(sv),1,f);
+	while (!feof(f) && Found == 0)	{
+		fread(&sv,sizeof(sv), 1, f);
 		if(strcmp(sv.Ma,MSSV) == 0) Found = 1;
 	}
 	fclose(f);
 	if (Found == 1)
-	printf("Tim thay sinh vien co ma %s. Ho ten la: %s",sv.Ma,sv.HoTen);
+		printf("Tim thay sinh vien co ma %s. Ho ten la: %s", sv.Ma,sv.HoTen);
 	else
-	printf("Khong tim thay sinh vien co ma %s",MSSV);
+		printf("Khong tim thay sinh vien co ma %s", MSSV);
 	printf("Bam phim bat ky de tiep tuc !!!");
 	getch();
 }
 
-int main ()
-{
+int main () {
 	int c;
-	for (;;)
-	{
+	for (;;) {
 	
 		printf("1. Nhap DSSV\n");
 		printf("2. In DSSV\n");
 		printf("3. Tim kiem\n");
 		printf("4/ Thoat\n");
-		printf("Ban chon 1, 2, 3, 4: ");scanf("%d",&c);
+		printf("Ban chon 1, 2, 3, 4: ");
+		scanf("%d", &c);
 		if(c == 1)
 		WriteFile("d:\\SinhVien.Dat");
 		else if(c == 2)
@@ -88,5 +82,6 @@ int main ()
 		Search("d:\\SinhVien.Dat");
 		else break;
 	}
-return 0;
+	
+	return 0;
 }
