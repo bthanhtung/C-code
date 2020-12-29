@@ -6,21 +6,19 @@
 1 4 5 7 9
 */
 #include <stdio.h>
-int main ()
-{
+int main () {
 	int i, j, k, n ;
 	printf("Enter number of rows; "); scanf("%d",n);
-	for(i = 1 ; i <= n ; i++)
-	{
-	if( i%2 == 0)
-	k = 2;
-	else 
-	k = 1 ;
-	for(j = 1 ; j <= i ; j++, k+=2);
-	{
-		printf("%d ",k);
+	for(i = 1 ; i <= n ; i++) {
+		if( i%2 == 0)
+		k = 2;
+		else 
+		k = 1 ;
+		for(j = 1 ; j <= i ; j++, k+=2)	{
+			printf("%d ",k);
+		}
+		printf("\n");
 	}
-	printf("\n");
-	}
-return 0;
+
+	return 0;
 }

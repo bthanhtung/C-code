@@ -1,8 +1,7 @@
-#include "stdio.h"
-#include "conio.h"
+#include <stdio.h>
+#include <conio.h>
  
-int main()
-{
+int main() {
 	printf("Giai he phuong trinh ax + by = c va dx + ey = f");
     float a, b, c,d, e, f;
     float Dx, Dy, D;
@@ -17,8 +16,7 @@ int main()
         printf("\n He pt vo so nghiem");
     if(D == 0 && Dx != 0)
         printf("\n He pt vo nghiem");
-    if(D != 0)
-    {
+    if(D != 0) {
         printf("\n He co nghiem");
         printf("\n x = %.3f", Dx/D);
         printf("\n y = %.3f", Dy/D);
